@@ -2,12 +2,17 @@
 @import "bootstrap";
 
 body {
-  height: 500px;
+  height: 550px;
   background-color: #F6FBF6;
 }
 
 section {
   overflow: auto;
+}
+
+#wrap {
+  min-height: 100%;
+  height: auto;
 }
 
 /* typography */

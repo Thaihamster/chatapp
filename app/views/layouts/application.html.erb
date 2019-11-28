@@ -10,9 +10,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    <%= render 'layouts/flash' %>
-    <%= yield %>
+    <div id="wrap">
+      <%= render 'layouts/header' %>
+      <%= render 'layouts/flash' %>
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
   <script src="https://kit.fontawesome.com/f0d31dc058.js" crossorigin="anonymous"></script>
