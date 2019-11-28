@@ -2,12 +2,14 @@
 <div class="jumbotron jumbotron-extend">
   <div class="container-fluid jumbotron-container">
     <div class="app-name">
-      <h1>Chatapp</h1>
+      <h1>CHATAPP!</h1>
     </div>
     <div class="app-description">
       <h3>プライベートなトーク空間を</h3>
       <button class="btn btn-home btn-xs">
-        <h4>はじめる</h4>
+        <%= link_to new_user_session_path do %>
+          <h4 style="font-weight: bold;">はじめる</h4>
+        <% end %>
       </button>
     </div>
   </div>

@@ -2,7 +2,17 @@
 @import "bootstrap";
 
 body {
+  height: 500px;
   background-color: #F6FBF6;
+}
+
+section {
+  overflow: auto;
+}
+
+/* typography */
+h1, h2, h3, h4, h5 {
+  font-family: 'ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN',sans-serif;
 }
 
 /* button (bootstrap) */
@@ -10,4 +20,53 @@ body {
 .btn-home {
   background-color: #C73C2E;
   color: white;
+}
+
+/* sessions */
+.container-sessions {
+  width: 30%;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* form */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+input {
+  height: auto !important;
+}
+
+.signup-form {
+  margin-top: 30px;
+  line-height: 30px;
+}
+
+.col-md-4 {
+  height: 100%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+/* flash_messages */
+
+.flash {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+  &__alert{
+    background-color: #DB3D36;
+  }
+  &__notice {
+    background-color: #BBD347;
+  }
 }

@@ -1,3 +1,13 @@
-<div class="message">
-  <p><%= message.content %></p>
+<div class='message'>
+  <% if message.user == current_user %>
+    <% position = 'right' %>
+  <% else %>
+    <% position = 'left' %>
+  <% end %>
+  <div class="row text-<%= position %>">
+    <p><%= "#{message.user.name}" %></p>
+  </div>
+  <div class="row text-<%= position %>">
+    <p><%= "#{message.content}" %></p>
+  </div>
 </div>

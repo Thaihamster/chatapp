@@ -3,6 +3,7 @@
   <head>
     <title><%= yield(:title) %> | CHATAPP</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -10,8 +11,9 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/flash' %>
     <%= yield %>
+    <%= render 'layouts/footer' %>
   </body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <script src="https://kit.fontawesome.com/f0d31dc058.js" crossorigin="anonymous"></script>
 </html>
