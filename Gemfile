@@ -11,7 +11,7 @@ gem 'rails', '~> 5.1.6'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'devise'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'rails-i18n'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
