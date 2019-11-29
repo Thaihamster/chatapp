@@ -79,13 +79,12 @@
       <div class="mesgs">
         <div class="msg_history">
           <div id="show_user" data-show_user="<%= current_user.id %>"></div>
-          <div id='messages' data-room_id="<%= @room.id %>"></div>
           <%= render @messages %>
+          <div id='messages' data-room_id="<%= @room.id %>"></div>
         </div>
         <div class="type_msg">
           <div class="input_msg_write">
-            <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' }, class: 'write_msg' %>
-            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+            <%= text_field_tag :content, nil, data: { behavior: 'room_speaker' }, class: 'write_msg', placeholder: 'Type a message here and send by enter' %>
           </div>
         </div>
       </div>
