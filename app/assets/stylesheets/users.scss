@@ -1,0 +1,37 @@
+/* index */
+.container-index {
+    margin-top: 200px;
+}
+
+/* show */
+.container-show {
+    margin-top: 170px;
+}
+
+.show-image img {
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+}
+
+.btn-talk {
+    padding-right: 30px;
+    padding-left: 30px;
+    border-radius: 10px;
+    background-color: #285294;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+}
+
+.btn-talk:hover{
+    border-radius: 10px;
+    border-color: #285294;
+    background-color: white;
+    transition-duration: 0.4s;
+    a {
+      color: #285294;
+    }
+  }
+

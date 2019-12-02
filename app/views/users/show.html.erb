@@ -1,0 +1,19 @@
+<% provide(:title, @user.name ) %>
+<div class="container">
+  <div class="messaging">
+    <div class="inbox_msg">
+      <%= render partial: 'layouts/chat_index'%>
+      <div class="container-show text-center">
+        <div class="show-image">
+            <img src="/human_image.jpeg">
+        </div>
+        <h3><%= @user.name %></h3>
+        <button class="btn btn-talk btn-xs">
+            <%= link_to '#' do %>
+                <h4 style="font-weight: bold;">トーク</h4>
+            <% end %>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

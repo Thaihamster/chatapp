@@ -12,6 +12,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @users = User.where.not(id: current_user.id )
     @messages = @room.messages.order(:id)
   end
 
