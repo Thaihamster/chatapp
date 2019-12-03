@@ -15,7 +15,15 @@ Rails.application.routes.draw do
 
   resources :rooms
 
+<<<<<<< HEAD
   resources :users, only: [:index, :show] 
+=======
+  resources :users, only: [:index, :show] do
+    member do
+      get :following, :followers
+    end
+  end
+>>>>>>> following-users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
