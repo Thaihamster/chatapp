@@ -8,10 +8,19 @@
             <img src="/human_image.jpeg">
         </div>
         <h3><%= @user.name %></h3>
-        <button class="btn btn-talk btn-xs">
-            <%= link_to '#' do %>
-                <h4 style="font-weight: bold;">トーク</h4>
-            <% end %>
+        <% if @user.rooms.any? %>
+          <%= link_to room_path(@room) do %>
+            <button class="btn btn-talk btn-xs">
+              <h4 style="font-weight: bold;">トーク画面へ</h4>
+            </button>
+          <% end %>
+        <% else %>
+          <%= link_to new_room_path do %>
+            <button class="btn btn-talk btn-xs">
+              <h4 style="font-weight: bold;">トーク</h4>  
+            </button>
+          <% end %>
+        <% end %>
         </button>
       </div>
     </div>

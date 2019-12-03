@@ -1,13 +1,16 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @rooms = Room.all.order(:id)
+  def new
+    @room = Room.new(owner_id: current_user.id)
+    if @room.save
+      RoomUser.create(user_id: current_user.id, room_id: @room.id)
+      redirect_to room_path(@room), notice: "トークを開始しました！"
+    end
   end
 
-  def new
-    Room.create!
-    redirect_to rooms_path
+  def index
+    @rooms = Room.all.order(:id)
   end
 
   def show
