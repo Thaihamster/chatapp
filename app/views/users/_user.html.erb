@@ -4,8 +4,9 @@
         <div class="chat_img"> <img src="/human_image.jpeg" class="rounded-circle"> </div>
         <div class="chat_ib">
             <h5><%= user.name %><span class="chat_date">Dec 25</span></h5>
-            <p>Test, which is a new approach to have all solutions 
-            astrology under one roof.</p>
+            <% if user.messages.any? %>
+            <p></p>
+            <% end %>
         </div>
     <% end %>
     </div>

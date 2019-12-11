@@ -8,20 +8,37 @@
             <img src="/human_image.jpeg">
         </div>
         <h3><%= @user.name %></h3>
-        <% if @user.rooms.any? %>
-          <%= link_to room_path(@room) do %>
+
+        <% if current_user.following?(@user) && @room.present? %>
+          <% if @room.nil? %>
+            <% @room_user = RoomUser.find_by(user_id: @user.id) %>
+            <% if @room_user.user_id == @user.id || @room.owner_id == @user.id%>
+              <%= link_to rooms_path do %>
+                <button class="btn btn-talk btn-xs">
+                  <h4>トーク一覧画面へ</h4>
+                </button>
+              <% end %>
+            <% end %>
+          <% else %>
+            <% @room_user = RoomUser.find_by(room_id: @room.id) %>
+            <% if @room_user.user_id == @user.id || @room.owner_id == @user.id%>
+              <%= link_to rooms_path do %>
+                <button class="btn btn-talk btn-xs">
+                  <h4>トーク一覧画面へ</h4>
+                </button>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% elsif current_user.following?(@user) %>
+          <%= link_to new_room_path(:user_id => @user.id), :method => 'get' do %>
             <button class="btn btn-talk btn-xs">
-              <h4 style="font-weight: bold;">トーク画面へ</h4>
+              <h4>トークルームの作成</h4>
             </button>
           <% end %>
+          <%= render 'follow_form' %>
         <% else %>
-          <%= link_to new_room_path do %>
-            <button class="btn btn-talk btn-xs">
-              <h4 style="font-weight: bold;">トーク</h4>  
-            </button>
-          <% end %>
+          <%= render 'follow_form' %>
         <% end %>
-        </button>
       </div>
     </div>
   </div>

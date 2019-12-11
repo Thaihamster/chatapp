@@ -3,7 +3,13 @@
   <div class="text-center">
     <ul>
       <% @rooms.each do |room| %>
-        <li><%= link_to "ROOM#{room.id}", room_path(room) %></li>
+      <% @room_user = RoomUser.find_by(room_id: room.id) %>
+        <% if room.owner_id == current_user.id %>
+          <li><%= link_to "#{@room_user.user.name}とのトークルーム", room_path(room) %></li>
+        <% elsif @room_user.user_id == current_user.id %>
+        <% user = User.find_by(id: room.owner_id) %>
+          <li><%= link_to "#{user.name}とのトークルーム", room_path(room) %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>

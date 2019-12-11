@@ -4,8 +4,8 @@ class RoomsController < ApplicationController
   def new
     @room = Room.new(owner_id: current_user.id)
     if @room.save
-      RoomUser.create(user_id: current_user.id, room_id: @room.id)
-      redirect_to room_path(@room), notice: "トークを開始しました！"
+      RoomUser.create!(room_id: @room.id, user_id: params[:user_id])
+      redirect_to rooms_path, notice: "トークを作成しました！"
     end
   end
 
