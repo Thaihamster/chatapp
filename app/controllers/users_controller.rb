@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     @users = User.where.not(id: current_user.id )
     @user = User.find(params[:id])
     @room = Room.find_by(owner_id: @user.id)
-    @room_user = RoomUser.find_by(user_id: @user.id)
+    @room_user = RoomUser.where(user_id: @user.id)
   end
 
   def following

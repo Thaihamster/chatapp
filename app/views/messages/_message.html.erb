@@ -9,6 +9,7 @@
   <% else %>
     <div class="incoming_msg_img"> <img src="/human_image.jpeg"> </div>
     <div class="received_msg">
+    <span class="user_name"> <%= @user.name %></span>
       <div class="received_withd_msg">
         <p><%= "#{message.content}" %></p>
         <span class="time_date"> <%= l(message.created_at, format: :long) %></span>
