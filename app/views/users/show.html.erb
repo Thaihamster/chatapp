@@ -34,8 +34,9 @@
                 <% else %>
                 <% @room = Room.where(owner_id: current_user.id) %>
                 <% @room_user = RoomUser.where(user_id: @user.id) %>
-                  <% if @room.ids.include?(@room_user.id) %>
-                    <%= link_to rooms_path do %>
+                <% @room_users = @room.ids & @room_user.ids %>
+                  <% if @room_users.present? %>
+                    <%= link_to room_path(@room_users) do %>
                       <button class="btn btn-talk btn-xs">
                         <h4>トーク一覧へ</h4>
                       </button>
