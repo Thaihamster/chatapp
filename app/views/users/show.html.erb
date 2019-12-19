@@ -17,22 +17,23 @@
             <% if @room = Room.find_by(owner_id: current_user.id) %>
 
               <% if @room_user.ids.include?(@room.id) %>
-                <%= link_to room_path(@room_user.ids) do %>
+                <%= link_to room_path(@room) do %>
                   <button class="btn btn-talk btn-xs">
                     <h4>トークルームへ</h4>
                   </button>
                 <% end %>
-              <% elsif @room = Room.find_by(owner_id: @user.id) %>
+              <% elsif @room = Room.where(owner_id: @user.id) %>
               <% @room_user = RoomUser.where(user_id: current_user.id) %>
-                <% if @room_user.ids.include?(@room.id) %>
-                  <%= link_to rooms_path do %>
+              <% @room_users = @room & @room_user%>
+                <% if @room_users.present? %>
+                  <%= link_to room_path(@room) do %>
                   <button class="btn btn-talk btn-xs">
-                    <h4>トーク一覧へ</h4>
+                    <h4>トークルームへ</h4>
                   </button>
                   <% end %>
                 <% else %>
                 <% @room = Room.where(owner_id: current_user.id) %>
-                <% @room_user = RoomUser.find_by(user_id: @user.id) %>
+                <% @room_user = RoomUser.where(user_id: @user.id) %>
                   <% if @room.ids.include?(@room_user.id) %>
                     <%= link_to rooms_path do %>
                       <button class="btn btn-talk btn-xs">
@@ -57,12 +58,13 @@
                 <%= render 'follow_form' %>
               <% end %>
             <% else %>
-            <% @room = Room.find_by(owner_id: @user.id) %>
+            <% @room = Room.where(owner_id: @user.id) %>
             <% @room_user = RoomUser.where(user_id: current_user.id) %>
-              <% if @room_user.ids.include?(@room.id) %>
-                <%= link_to rooms_path do %>
+            <% @room_users = @room.ids & @room_user.ids %>
+              <% if @room_users.present? %>
+                <%= link_to room_path(@room_users) do %>
                   <button class="btn btn-talk btn-xs">
-                    <h4>トーク一覧へ</h4>
+                    <h4>トークルームへ</h4>
                   </button>
                 <% end %>
               <% else %>
@@ -104,7 +106,7 @@
           <% @room_users = @room.ids & @room_user.ids %>
               
             <% if @room_users.present? %>
-              <%= link_to room_path(@room_user.ids) do %>
+              <%= link_to room_path(@room_users) do %>
                 <button class="btn btn-talk btn-xs">
                   <h4>トークルームへ</h4>
                 </button>
