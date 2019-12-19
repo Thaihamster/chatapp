@@ -3,9 +3,15 @@
     <%= link_to user_path(user) do %>
         <div class="chat_img"> <img src="/human_image.jpeg" class="rounded-circle"> </div>
         <div class="chat_ib">
-            <h5><%= user.name %><span class="chat_date">Dec 25</span></h5>
-            <% if user.messages.any? %>
-            <p></p>
+            <% if @room.nil? %>
+                <% @room = Room.find_by(owner_id: current_user.id) %>
+                <% @message = Message.where(room_id: @room.id).last %>
+                <h5><%= user.name %><span class="chat_date"><%= l(@message.created_at, format: :long) %></span></h5>
+                <p><%= @message.content %></p>
+            <% else %>
+                <% @message = Message.where(room_id: @room.id).last %>
+                <h5><%= user.name %><span class="chat_date"><%= l(@message.created_at, format: :long) %></span></h5>
+                <p><%= @message.content %></p>
             <% end %>
         </div>
     <% end %>
